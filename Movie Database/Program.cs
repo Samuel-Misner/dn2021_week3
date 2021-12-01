@@ -10,6 +10,7 @@ namespace Movie_Database
         public string Category;
         public int Runtime;
         public int ReleaseYear;
+        public static int Count;
 
         public Movie(string title, string category, int runtime, int releaseYear)
         {
@@ -17,6 +18,7 @@ namespace Movie_Database
             Category = category;
             Runtime = runtime;
             ReleaseYear = releaseYear;
+            Count++;
         }
 
         public void PrintMovie()
@@ -55,7 +57,7 @@ namespace Movie_Database
                 new Movie("Luca", "Fantasy", 95, 2021),
                 new Movie("Mulan", "Fantasy", 115, 2020)
             };
-
+            
             movies.Sort((comparing, comparer) => comparing.Title.CompareTo(comparer.Title));
 
             bool run = true;
