@@ -6,11 +6,11 @@ namespace Movie_Database
 {
     class Movie
     {
-        public string Title;
-        public string Category;
-        public int Runtime;
-        public int ReleaseYear;
-        public static int Count;
+        string Title;
+        string Category;
+        int Runtime;
+        int ReleaseYear;
+        static int Count;
 
         public Movie(string title, string category, int runtime, int releaseYear)
         {
@@ -29,6 +29,16 @@ namespace Movie_Database
         public bool MovieHasCategory(string category)
         {
             return (category == Category);
+        }
+
+        public string GetTitle()
+        {
+            return Title;
+        }
+
+        public string GetCategory()
+        {
+            return Category;
         }
     }
     class Program
@@ -58,7 +68,7 @@ namespace Movie_Database
                 new Movie("Mulan", "Fantasy", 115, 2020)
             };
             
-            movies.Sort((comparing, comparer) => comparing.Title.CompareTo(comparer.Title));
+            movies.Sort((comparing, comparer) => comparing.GetTitle().CompareTo(comparer.GetTitle()));
 
             bool run = true;
 
@@ -67,7 +77,7 @@ namespace Movie_Database
                 Console.WriteLine("Here's a list of categories:\n");
 
                 PrintCategories(categoryList);
-
+                
                 Console.Write("\nPlease pick a category: ");
 
                 string input = "";
@@ -92,8 +102,6 @@ namespace Movie_Database
                 Console.WriteLine($"\nHere's a list of {category} movies.\n");
 
                 Console.WriteLine($"{"Title",-32} {"Runtime",-12} {"Release Year",-12}");
-
-                List<Movie> sortedMovies = movies.OrderBy(movie => movie.Title).ToList();
 
                 foreach (Movie movie in movies)
                 {
