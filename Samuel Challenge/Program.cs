@@ -41,7 +41,7 @@ namespace Samuel_Challenge
             Dictionary<string, int> boardSize = new Dictionary<string, int>();
             boardSize["X"] = 9;
             boardSize["Y"] = 9;
-            Player plr = new Player(4, 4);
+            Player plr = new Player((int)Math.Floor((double)boardSize["X"] / 2), (int)Math.Floor((double)boardSize["Y"] / 2));
 
             PrintBoard(plr.X, plr.Y, boardSize["X"], boardSize["Y"]);
 
@@ -57,7 +57,7 @@ namespace Samuel_Challenge
                 }
                 else if (input == ConsoleKey.S || input == ConsoleKey.DownArrow)
                 {
-                    if (plr.Y < 8)
+                    if (plr.Y < boardSize["Y"] - 1)
                     {
                         plr.Y++;
                     }
@@ -71,7 +71,7 @@ namespace Samuel_Challenge
                 }
                 else if (input == ConsoleKey.D || input == ConsoleKey.RightArrow)
                 {
-                    if (plr.X < 8)
+                    if (plr.X < boardSize["X"] - 1)
                     {
                         plr.X++;
                     }
