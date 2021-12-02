@@ -37,12 +37,48 @@ namespace Samuel_Challenge
         }
         static void Main(string[] args)
         {
+            bool run = true;
             Dictionary<string, int> boardSize = new Dictionary<string, int>();
             boardSize["X"] = 9;
             boardSize["Y"] = 9;
             Player plr = new Player(4, 4);
 
             PrintBoard(plr.X, plr.Y, boardSize["X"], boardSize["Y"]);
+
+            do
+            {
+                ConsoleKey input = Console.ReadKey(false).Key;
+                if (input == ConsoleKey.W || input == ConsoleKey.UpArrow)
+                {
+                    if (plr.Y > 0)
+                    {
+                        plr.Y--;
+                    }
+                }
+                else if (input == ConsoleKey.S || input == ConsoleKey.DownArrow)
+                {
+                    if (plr.Y < 8)
+                    {
+                        plr.Y++;
+                    }
+                }
+                else if (input == ConsoleKey.A || input == ConsoleKey.LeftArrow)
+                {
+                    if (plr.X > 0)
+                    {
+                        plr.X--;
+                    }
+                }
+                else if (input == ConsoleKey.D || input == ConsoleKey.RightArrow)
+                {
+                    if (plr.X < 8)
+                    {
+                        plr.X++;
+                    }
+                }
+                Console.Clear();
+                PrintBoard(plr.X, plr.Y, boardSize["X"], boardSize["Y"]);
+            } while (run);
         }
     }
 }
